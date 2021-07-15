@@ -71,7 +71,7 @@ const headCells = [
 function EnhancedTableHead(props) {
   const {
     classes,
-    onSelectAllClick,
+    // onSelectAllClick,
     order,
     orderBy,
     numSelected,
@@ -250,13 +250,12 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   React.useEffect(() => {
-    if (rows.length == 0 || filterIsCanceled) {
-      getInitialRows();
-    }
+    // if (rows.length == 0 || filterIsCanceled) {
+    getInitialRows();
+    // }
   }, []);
 
   const getInitialRows = () => {
-    console.log("getintialrows");
     let item = news.articles.map((article) => {
       return createData(
         article.urlToImage,
@@ -320,11 +319,6 @@ export default function EnhancedTable() {
   };
 
   const handleSearch = (value) => {
-    if (value == "" || value == null) {
-      setFilterIsCanceled(true);
-    } else {
-      setFilterIsCanceled(false);
-    }
     const item = news.articles
       .filter(
         (a) =>

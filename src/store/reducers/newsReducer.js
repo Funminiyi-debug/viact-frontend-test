@@ -1,4 +1,4 @@
-import { SET_NEWS, SEARCH } from "../types";
+import { SET_NEWS, SEARCH, SET_LOADING } from "../types";
 
 const initialstate = {
   loading: false,
@@ -9,8 +9,11 @@ const initialstate = {
 
 export default (state = initialstate, action) => {
   switch (action.type) {
+    case SET_LOADING:
+      return Object.assign({}, state, {
+        loading: action.payload,
+      });
     case SET_NEWS:
-      console.log(action.payload);
       return Object.assign({}, state, {
         articles: action.payload.articles,
         numberOfArticles: action.numberOfArticles,
