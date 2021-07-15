@@ -248,13 +248,6 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  React.useEffect(() => {
-    // if (rows.length == 0 || filterIsCanceled) {
-    getInitialRows();
-    // }
-  }, []);
-
   const getInitialRows = () => {
     let item = news.articles.map((article) => {
       return createData(
@@ -269,20 +262,17 @@ export default function EnhancedTable() {
 
     setRows(item);
   };
+  // getInitialRows();
+  React.useEffect(() => {
+    if (rows.length == 0) {
+      getInitialRows();
+    }
+  }, [news.articles]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
-  };
-
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
   };
 
   const handleClick = (event, name) => {
