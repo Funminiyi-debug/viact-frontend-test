@@ -1,3 +1,11 @@
+### `Setting the Config.js`
+
+remember to update the api key variable in the config.js file at the root of the project
+
+export default {
+API_KEY: "<Your API KEY HERE>",
+};
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
